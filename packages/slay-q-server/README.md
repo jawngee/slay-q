@@ -1,11 +1,13 @@
-# packageName
+# Slay Q Server
 
 [![npm version][npm-version-src]][npm-version-href]
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
 [![bundle][bundle-src]][bundle-href]
 [![Codecov][codecov-src]][codecov-href]
 
-This is my package description.
+This is the server component of [Slay Q](https://www.npmjs.com/package/@slay-pics/slay-q).
+
+This is a thin wrapper around [Graphile Worker](https://worker.graphile.org) which is doing all of the heavy lifting.
 
 ## Usage
 
@@ -13,39 +15,73 @@ Install package:
 
 ```sh
 # npm
-npm install packageName
+npm install @slay-pics/slay-q-server
 
 # yarn
-yarn add packageName
+yarn add @slay-pics/slay-q-server
 
 # pnpm
-pnpm install packageName
+pnpm install @slay-pics/slay-q-server
 
 # bun
-bun install packageName
+bun install @slay-pics/slay-q-server
 ```
 
-Import:
+Run:
 
-```js
-// ESM
-import {} from "packageName";
-
-// CommonJS
-const {} = require("packageName");
+```bash
+npx slay-q-server /path/to/slay-config.json
 ```
 
-## Development
+## Requirements
 
-- Clone this repository
-- Install latest LTS version of [Node.js](https://nodejs.org/en/)
-- Enable [Corepack](https://github.com/nodejs/corepack) using `corepack enable`
-- Install dependencies using `pnpm install`
-- Run interactive tests using `pnpm dev`
+* Postgres database
+
+## Migrations
+You must run the SQL migrations in the migrations folder against your database.  Slay Q provides some additional functionality on
+top of Graphile Worker that requires additional database tables and stored procedures to be installed.
+
+## Configuration
+To run slay-q-server, you need to create a config file first:
+
+```json
+{
+  "queues": {
+    "mail": {
+      "concurrency": 4
+    },
+    "messaging": {
+      "concurrency": 6,
+      "alias": [
+        "dispatch",
+        "ready"
+      ]
+    },
+    "interactions": {
+      "concurrency": 1,
+      "alias": [
+        "reconcile",
+        "discord"
+      ]
+    },
+    "housekeeping": {
+      "concurrency": 2
+    },
+    "profile": {
+      "concurrency": 8
+    },
+    "general": {
+      "concurrency": 10
+    }
+  }
+}
+```
+
+We are essentially defining a variety of queues and their level of concurrency (the number of tasks that can run at once in the queue).
+Additionally, we are specifying aliases for these queues.  These aliases are only provided to help keep things organized on the client
+side of things.
 
 ## License
-
-Made with 💛
 
 Published under [MIT License](./LICENSE).
 

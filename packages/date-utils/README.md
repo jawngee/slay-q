@@ -1,11 +1,11 @@
-# packageName
+# @slay-pics/date-utils
 
 [![npm version][npm-version-src]][npm-version-href]
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
 [![bundle][bundle-src]][bundle-href]
 [![Codecov][codecov-src]][codecov-href]
 
-This is my package description.
+A handful of date utilities used on [Slay](https://slay.pics).
 
 ## Usage
 
@@ -13,39 +13,61 @@ Install package:
 
 ```sh
 # npm
-npm install packageName
+npm install @slay-pics/date-utils
 
 # yarn
-yarn add packageName
+yarn add @slay-pics/date-utils
 
 # pnpm
-pnpm install packageName
+pnpm install @slay-pics/date-utils
 
 # bun
-bun install packageName
+bun install @slay-pics/date-utils
 ```
 
-Import:
+## Usage
 
-```js
-// ESM
-import {} from "packageName";
+* `addYears(date, amount)`
+* `addMonths(date, amount)`
+* `addDays(date, amount)`
+* `addHours(date, amount)`
+* `addMinutes(date, amount)`
+* `addSeconds(date, amount)`
 
-// CommonJS
-const {} = require("packageName");
-```
+Adds the specified amount of units to a date.  Date can be a string, a JS date or null.  If null is passed, then the current date
+is used.
 
-## Development
+* `isPast(date)`
+* `isFuture(date)`
 
-- Clone this repository
-- Install latest LTS version of [Node.js](https://nodejs.org/en/)
-- Enable [Corepack](https://github.com/nodejs/corepack) using `corepack enable`
-- Install dependencies using `pnpm install`
-- Run interactive tests using `pnpm dev`
+Determines if the given date occurs in the past or future.
+
+* `isWithinYears(date, amount)`
+* `isWithinMonths(date, amount)`
+* `isWithinDays(date, amount)`
+* `isWithinHours(date, amount)`
+* `isWithinMinutes(date, amount)`
+* `isWithinSeconds(date, amount)`
+
+Determines if the specified date is within the given range of the current date.
+
+* `dayDiff(date1, date2)`
+
+Returns the difference between two dates in days
+
+* `thisMonth(date)`
+
+Returns a date that is the 1st day of the month of the specified date.
+
+* `previousMonth(date)`
+
+Returns a date that is the 1st day of the prior month of the specified date.
+
+* `nextMonth(date)`
+
+Returns a date that is the 1st day of the next month of the specified date.
 
 ## License
-
-Made with 💛
 
 Published under [MIT License](./LICENSE).
 

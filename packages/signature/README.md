@@ -1,11 +1,11 @@
-# packageName
+# @slay-pics/signature
 
 [![npm version][npm-version-src]][npm-version-href]
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
 [![bundle][bundle-src]][bundle-href]
 [![Codecov][codecov-src]][codecov-href]
 
-This is my package description.
+Simple function to validate/verify a HMAC of a JS object with a secret.
 
 ## Usage
 
@@ -13,39 +13,31 @@ Install package:
 
 ```sh
 # npm
-npm install packageName
+npm install @slay-pics/signature
 
 # yarn
-yarn add packageName
+yarn add @slay-pics/signature
 
 # pnpm
-pnpm install packageName
+pnpm install @slay-pics/signature
 
 # bun
-bun install packageName
+bun install @slay-pics/signature
 ```
 
-Import:
+Use:
 
 ```js
 // ESM
-import {} from "packageName";
+import { calcSig } from "@slay-pics/signature";
 
 // CommonJS
-const {} = require("packageName");
+const { calcSig } = require("@slay-pics/signature");
+
+const sig = calcSig({ some: 'object', with: 'props' }, process.env.YOUR_SECRET);
 ```
 
-## Development
-
-- Clone this repository
-- Install latest LTS version of [Node.js](https://nodejs.org/en/)
-- Enable [Corepack](https://github.com/nodejs/corepack) using `corepack enable`
-- Install dependencies using `pnpm install`
-- Run interactive tests using `pnpm dev`
-
 ## License
-
-Made with 💛
 
 Published under [MIT License](./LICENSE).
 

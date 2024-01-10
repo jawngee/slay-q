@@ -5,7 +5,7 @@
 [![bundle][bundle-src]][bundle-href]
 [![Codecov][codecov-src]][codecov-href]
 
-Slay Q is a queue and background job management system inspired by [Inngest](https://inngest.com).  It's in production use on [Slay (nsfw)](https://slay.pics/)
+Slay Q is a queue and background job management system inspired by [Inngest](https://inngest.com).  It's in production use on [Slay](https://slay.pics/)
 for managing all of our media processing, notifications and other services.
 
 It uses Graphile Workers on the backend (see Slay Q Server for details) and this client adds the Inngest-esque workflow stuff on top.
