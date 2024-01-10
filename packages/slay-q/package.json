@@ -1,11 +1,12 @@
 {
   "name": "@slay-pics/slay-q",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "description": "",
   "repository": "SlayPics/SlayUtils",
   "license": "MIT",
   "sideEffects": false,
   "type": "module",
+  "keywords": ["inngest", "qstash", "job queue", "background tasks", "queue", "step function", "job scheduler", "task manager", "job processing", "workflow"],
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
