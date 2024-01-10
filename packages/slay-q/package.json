@@ -1,8 +1,8 @@
 {
   "name": "@slay-pics/slay-q",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "",
-  "repository": "slay/library",
+  "repository": "SlayPics/SlayUtils",
   "license": "MIT",
   "sideEffects": false,
   "type": "module",

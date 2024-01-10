@@ -19,7 +19,7 @@ It uses Graphile Workers on the backend (see Slay Q Server for details) and this
 ## Requirements
 
 * Postgres Database (we use Supabase at Slay)
-* Droplet to run the server
+* Droplet to run the [Slay Q Server](https://www.npmjs.com/package/@slay-pics/slay-q-server)
 * Sunglasses because you can't be this cool without them
 
 ## Usage
@@ -403,7 +403,7 @@ We then call the `receiveEvent` method on the SlayQClient instance which handles
 This should be pretty easy to adapt other frameworks.
 
 ### Running the Server
-See the `slay-q-server` package for more details on running the server, which is a **requirement**.
+See the [`slay-q-server`](https://www.npmjs.com/package/@slay-pics/slay-q-server) package for more details on running the server, which is a **requirement**.
 
 ## To Do
 
@@ -417,11 +417,11 @@ Published under [MIT License](./LICENSE).
 
 <!-- Badges -->
 
-[npm-version-src]: https://img.shields.io/npm/v/packageName?style=flat&colorA=18181B&colorB=F0DB4F
-[npm-version-href]: https://npmjs.com/package/packageName
-[npm-downloads-src]: https://img.shields.io/npm/dm/packageName?style=flat&colorA=18181B&colorB=F0DB4F
-[npm-downloads-href]: https://npmjs.com/package/packageName
-[codecov-src]: https://img.shields.io/codecov/c/gh/unjs/packageName/main?style=flat&colorA=18181B&colorB=F0DB4F
-[codecov-href]: https://codecov.io/gh/unjs/packageName
-[bundle-src]: https://img.shields.io/bundlephobia/minzip/packageName?style=flat&colorA=18181B&colorB=F0DB4F
-[bundle-href]: https://bundlephobia.com/result?p=packageName
+[npm-version-src]: https://img.shields.io/npm/v/@slay-pics/slay-q?style=flat&colorA=18181B&colorB=F0DB4F
+[npm-version-href]: https://npmjs.com/package/@slay-pics/slay-q
+[npm-downloads-src]: https://img.shields.io/npm/dm/@slay-pics/slay-q?style=flat&colorA=18181B&colorB=F0DB4F
+[npm-downloads-href]: https://npmjs.com/package/@slay-pics/slay-q
+[codecov-src]: https://img.shields.io/codecov/c/gh/unjs/@slay-pics/slay-q/main?style=flat&colorA=18181B&colorB=F0DB4F
+[codecov-href]: https://codecov.io/gh/unjs/@slay-pics/slay-q
+[bundle-src]: https://img.shields.io/bundlephobia/minzip/@slay-pics/slay-q?style=flat&colorA=18181B&colorB=F0DB4F
+[bundle-href]: https://bundlephobia.com/result?p=@slay-pics/slay-q
