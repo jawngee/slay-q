@@ -1,5 +1,5 @@
 {
-  "name": "@slay/slay-q-server",
+  "name": "@slay-pics/slay-q-server",
   "version": "0.1.0",
   "description": "",
   "repository": "slay/library",
@@ -48,7 +48,7 @@
   },
   "packageManager": "pnpm@8.12.1",
   "dependencies": {
-    "@slay/signature": "workspace:*",
+    "@slay-pics/signature": "workspace:*",
     "citty": "^0.1.5",
     "dotenv": "^16.3.1",
     "graphile-worker": "^0.16.1",

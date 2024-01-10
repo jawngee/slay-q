@@ -1,6 +1,6 @@
 import {z} from "zod";
 import {JobHelpers} from "graphile-worker";
-import {calcSig} from "@slay/signature";
+import {calcSig} from "@slay-pics/signature";
 
 const PayloadSchema = z.object({
 	url: z.string().url(),

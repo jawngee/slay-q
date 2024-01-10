@@ -15,8 +15,8 @@ import {
 import type { SlayQDriver } from "./driver";
 import { SlayQCron } from "./cron";
 
-import {addSeconds} from "@slay/date-utils";
-import {calcSig} from "@slay/signature";
+import {addSeconds} from "@slay-pics/date-utils";
+import {calcSig} from "@slay-pics/signature";
 import shortUUID from "short-uuid";
 import ms from "ms";
 

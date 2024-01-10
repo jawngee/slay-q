@@ -12,7 +12,7 @@ export type SlayQOptions = {
   cancelOn?: { event: string; match: string }[];
   waitsOn?: { event: string; match: string }[];
   invokes?: string[];
-  queue?: "mail" | "interactions" | "reconcile" | "messaging" | "housekeeping" | "dispatch" | "profile" | "general" | "ready";
+  queue?: string;
 };
 
 export type SlayQFunction = SlayQOptions & {

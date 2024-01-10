@@ -1,5 +1,5 @@
 {
-  "name": "@slay/slay-q",
+  "name": "@slay-pics/slay-q",
   "version": "0.1.0",
   "description": "",
   "repository": "slay/library",
@@ -49,8 +49,8 @@
     "ms": "^2.1.3",
     "short-uuid": "^4.2.2",
     "zod": "^3.22.4",
-    "@slay/date-utils": "workspace:*",
-    "@slay/signature": "workspace:*"
+    "@slay-pics/date-utils": "workspace:*",
+    "@slay-pics/signature": "workspace:*"
   },
   "packageManager": "pnpm@8.12.1"
 }

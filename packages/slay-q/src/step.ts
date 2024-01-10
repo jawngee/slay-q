@@ -54,14 +54,18 @@ export class SlayQStep<T> {
     throw new SlayQDelayError("Sleep", time);
   }
 
-  async sleepUntil(name: string, date: string) {
+  async sleepUntil(name: string, date: string|Date) {
     if (this._stepCache.has(name)) {
       return;
     }
 
+		if (typeof date === "string") {
+			date = new Date(date);
+		}
+
     this._stepCache.set(name, true);
 
-    throw new SlayQDelayError("Sleep", new Date(date).getTime());
+    throw new SlayQDelayError("Sleep", date.getTime());
   }
 
   async waitForEvent(name: string, event: string, timeout: string) {
@@ -74,13 +78,13 @@ export class SlayQStep<T> {
     throw new SlayQWaitOnEventError("Wait", name, event, timeout);
   }
 
-  async invoke(name: string, event: string, data: any): Promise<any> {
+  async invoke(name: string, event: string, data: any, timeout: string = '15m'): Promise<any> {
     if (this._stepCache.has(name)) {
       return this._stepCache.get(name);
     }
 
     this._stepCache.set(name, null);
 
-    throw new SlayQInvokeEventError("Invoke", name, event, data);
+    throw new SlayQInvokeEventError("Invoke", name, event, data, timeout);
   }
 }

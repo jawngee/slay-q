@@ -76,10 +76,10 @@ importers:
 
   packages/slay-q:
     dependencies:
-      '@slay/date-utils':
+      '@slay-pics/date-utils':
         specifier: workspace:*
         version: link:../date-utils
-      '@slay/signature':
+      '@slay-pics/signature':
         specifier: workspace:*
         version: link:../signature
       '@supabase/supabase-js':
@@ -134,7 +134,7 @@ importers:
 
   packages/slay-q-server:
     dependencies:
-      '@slay/signature':
+      '@slay-pics/signature':
         specifier: workspace:*
         version: link:../signature
       citty:
