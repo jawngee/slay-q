@@ -1,0 +1,30 @@
+{
+  "queues": {
+    "mail": {
+      "concurrency": 4
+    },
+    "messaging": {
+      "concurrency": 6,
+      "alias": [
+        "dispatch",
+        "ready"
+      ]
+    },
+    "interactions": {
+      "concurrency": 1,
+      "alias": [
+        "reconcile",
+        "discord"
+      ]
+    },
+    "housekeeping": {
+      "concurrency": 2
+    },
+    "profile": {
+      "concurrency": 8
+    },
+    "general": {
+      "concurrency": 10
+    }
+  }
+}

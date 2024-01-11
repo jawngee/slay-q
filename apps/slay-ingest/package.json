@@ -13,6 +13,7 @@
     "@supabase/supabase-js": "^2.39.2",
     "h3-zod": "^0.5.3",
     "nitropack": "latest",
+    "pg": "^8.11.3",
     "winston": "^3.11.0"
   }
 }

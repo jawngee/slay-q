@@ -4,15 +4,20 @@ This is an HTTP based RPC server for adding and managing Slay Q for use with `Sl
 
 ## Requirements
 ### Database
-* Supabase database
+* Supabase database or Postgres database
 
 ### Required Environment Variables
 Make sure to define the following environment variables:
 
 * `NITRO_SLAY_Q_SECRET` - The secret used to verify the signature of events posted to this api.
+
+### Optional Environment Variables
+You need to specify either the `NITRO_SUPABASE_*` environment variables or the `NITRO_DATABASE_URL` environment string depending
+on what you want to connect to.
+
 * `NITRO_SUPABASE_URL` - The URL for your supabase instance
 * `NITRO_SUPABASE_SERVICE_KEY` - The service key for your supabase instance.
-
+* `NITRO_DATABASE_URL` - The connection string URL for your postgres database.
 
 ## Setup
 
