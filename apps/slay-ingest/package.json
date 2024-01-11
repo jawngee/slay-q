@@ -1,0 +1,18 @@
+{
+  "private": true,
+  "scripts": {
+    "prepare": "nitropack prepare",
+    "dev": "nitropack dev",
+    "build": "nitropack build",
+    "preview": "node .output/server/index.mjs"
+  },
+  "dependencies": {
+    "@slay-pics/date-utils": "workspace:*",
+    "@slay-pics/signature": "workspace:*",
+    "@slay-pics/slay-q": "workspace:*",
+    "@supabase/supabase-js": "^2.39.2",
+    "h3-zod": "^0.5.3",
+    "nitropack": "latest",
+    "winston": "^3.11.0"
+  }
+}
