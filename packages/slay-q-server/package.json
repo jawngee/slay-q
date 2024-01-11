@@ -1,10 +1,21 @@
 {
   "name": "@slay-pics/slay-q-server",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Slay Q Server is the server component of Slay Q, a queue and background job management system inspired by Inngest.  It's in production use on https://slay.pics for managing all of our media processing, notifications and other services.",
   "repository": "SlayPics/SlayUtils",
   "license": "MIT",
-  "keywords": ["inngest", "qstash", "job queue", "background tasks", "queue", "step function", "job scheduler", "task manager", "job processing", "workflow"],
+  "keywords": [
+    "inngest",
+    "qstash",
+    "job queue",
+    "background tasks",
+    "queue",
+    "step function",
+    "job scheduler",
+    "task manager",
+    "job processing",
+    "workflow"
+  ],
   "sideEffects": false,
   "type": "module",
   "exports": {
@@ -26,6 +37,9 @@
   ],
   "scripts": {
     "build": "unbuild",
+    "stub": "unbuild --stub",
+    "watch": "node --watch-path=src dist/index.mjs",
+    "build:sql": "node scripts/build-sql-module.mjs",
     "dev": "vitest dev",
     "play": "jiti playground",
     "lint": "eslint --cache --ext .ts,.js,.mjs,.cjs . && prettier -c src test",
@@ -53,6 +67,7 @@
     "citty": "^0.1.5",
     "dotenv": "^16.3.1",
     "graphile-worker": "^0.16.1",
+    "pg": "^8.11.3",
     "zod": "^3.22.4"
   }
 }

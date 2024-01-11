@@ -1,14 +1,10 @@
-import {httpHandler} from "./http_handler";
+import {httpHandler} from "./http-handler";
 import {run} from "graphile-worker";
-import {existsSync, readFileSync} from "fs";
+import {readFileSync} from "fs";
 import {ConfigSchemaType} from "./types";
+import {MigrationPlugin} from "./migration-plugin";
 
 export async function server(configFile:string) {
-	if (!existsSync(configFile)) {
-		console.error('slay-config.json missing in current directory.');
-		process.exit(0);
-	}
-
 	const configText = readFileSync(configFile).toString('utf-8');
 	const config:ConfigSchemaType = JSON.parse(configText);
 
@@ -21,6 +17,9 @@ export async function server(configFile:string) {
 		taskList: {
 			cronQueue: httpHandler,
 		},
+		preset: {
+			plugins: [ MigrationPlugin ],
+		}
 	});
 
 	const promises = [cronQueue];

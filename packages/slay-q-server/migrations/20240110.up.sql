@@ -1,7 +1,21 @@
 ------------------------------------------------------------------------------------------------------------------------
+-- Create slayq schema
+------------------------------------------------------------------------------------------------------------------------
+create schema if not exists slayq;
+
+------------------------------------------------------------------------------------------------------------------------
+-- Migrations table
+------------------------------------------------------------------------------------------------------------------------
+create table if not exists slayq._migrations  (
+	id bigserial primary key,
+	migration text not null unique,
+	created_at timestamptz not null default now()
+);
+
+------------------------------------------------------------------------------------------------------------------------
 -- Table for tasks waiting for an event to run
 ------------------------------------------------------------------------------------------------------------------------
-create table graphile_worker._private_waiting_on  (
+create table if not exists slayq._private_waiting_on  (
 	id bigserial primary key,
 	job_id bigint not null references graphile_worker._private_jobs(id) on delete cascade,
 	event text,
@@ -14,7 +28,7 @@ create table graphile_worker._private_waiting_on  (
 ------------------------------------------------------------------------------------------------------------------------
 -- Table for tasks that have invoked another and are waiting for results
 ------------------------------------------------------------------------------------------------------------------------
-create table graphile_worker._private_invoker (
+create table if not exists slayq._private_invoker (
 	id bigserial primary key,
 	job_id bigint not null references graphile_worker._private_jobs(id) on delete cascade,
 	job_key text not null,
@@ -25,7 +39,7 @@ create table graphile_worker._private_invoker (
 -- add_worker_job - exposes graphile_worker.add_job to public schema
 ------------------------------------------------------------------------------------------------------------------------
 -- drop function if exists add_worker_job;
-create function add_worker_job (
+create or replace function public.add_worker_job (
     identifier text,
     payload json DEFAULT NULL::json,
     queue_name text DEFAULT NULL::text,
@@ -45,7 +59,7 @@ $$;
 -- wait_for_worker_event - Waits for the specified event to fire
 ------------------------------------------------------------------------------------------------------------------------
 -- drop function if exists wait_for_worker_event;
-create or replace function wait_for_worker_event(_job_key text, _event text, _match_key text, _match_value text, _step_name text, _expires_at timestamptz) returns void as $$
+create or replace function public.wait_for_worker_event(_job_key text, _event text, _match_key text, _match_value text, _step_name text, _expires_at timestamptz) returns void as $$
 declare
 	_job_id bigint;
 begin
@@ -54,7 +68,7 @@ begin
 		raise exception 'Job not found: %', _job_key;
 	end if;
 
-	insert into graphile_worker._private_waiting_on (job_id, event, match_key, match_value, step_name, expires_at) values (_job_id, _event, _match_key, _match_value, _step_name, _expires_at);
+	insert into slayq._private_waiting_on (job_id, event, match_key, match_value, step_name, expires_at) values (_job_id, _event, _match_key, _match_value, _step_name, _expires_at);
 end
 $$ language plpgsql security definer;
 
@@ -72,7 +86,7 @@ begin
 		raise exception 'Job not found: %', _invoker_job_key;
 	end if;
 
-	insert into graphile_worker._private_invoker (job_id, job_key, step_name) values (_job_id, _target_job_key, _step_name);
+	insert into slayq._private_invoker (job_id, job_key, step_name) values (_job_id, _target_job_key, _step_name);
 end
 $$ language plpgsql security definer;
 
@@ -91,9 +105,9 @@ begin
 		select into
 			_waiting_id, _job_id, _step_name id, job_id, step_name
 		from
-			graphile_worker._private_invoker
+			slayq._private_invoker
 		where
-			graphile_worker._private_invoker.job_key = _job_key
+			slayq._private_invoker.job_key = _job_key
 		order by
 			id
 		limit 1;
@@ -110,7 +124,7 @@ begin
 		where
 			id = _job_id;
 
-		delete from graphile_worker._private_invoker where id = _waiting_id;
+		delete from slayq._private_invoker where id = _waiting_id;
 	end loop;
 end
 $$ language plpgsql security definer;
@@ -129,9 +143,9 @@ begin
 		select into
 			_waiting_id, _job_id, _step_name id, job_id, step_name
 		from
-			graphile_worker._private_waiting_on
+			slayq._private_waiting_on
 		where
-			graphile_worker._private_waiting_on.event = _event
+			slayq._private_waiting_on.event = _event
 		and
 			match_key = _match_key
 		and
@@ -154,7 +168,7 @@ begin
 		where
 			id = _job_id;
 
-		delete from graphile_worker._private_waiting_on where id = _waiting_id;
+		delete from slayq._private_waiting_on where id = _waiting_id;
 	end loop;
 end
 $$ language plpgsql security definer;
@@ -162,6 +176,7 @@ $$ language plpgsql security definer;
 ------------------------------------------------------------------------------------------------------------------------
 -- cancel_pending_tasks - Cancels any pending tasks
 ------------------------------------------------------------------------------------------------------------------------
+-- drop function if exists cancel_pending_tasks;
 create or replace function cancel_pending_tasks(event text, matchKey text, matchVal text) returns void language plpgsql security definer as $$
 begin
 	delete from

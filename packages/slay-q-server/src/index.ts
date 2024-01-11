@@ -2,6 +2,8 @@ import {defineCommand, runMain} from "citty";
 import {existsSync} from "fs";
 import * as dotenv from "dotenv";
 import {server} from "./server";
+import pg from 'pg';
+const { Client } = pg;
 
 dotenv.config();
 
@@ -18,7 +20,12 @@ const mainCommand = defineCommand({
 			required: true
 		}
 	},
-	run({args }) {
+	async run({args }) {
+		if (!process.env.SLAY_Q_DATABASE_URL) {
+			console.error('Missing required environment variable SLAY_Q_DATABASE_URL');
+			process.exit(1);
+		}
+
 		let configFileRealPath = args.configFile;
 		if (!existsSync(configFileRealPath)) {
 			configFileRealPath = process.cwd()+'/'+args.configFile;
@@ -35,11 +42,6 @@ const mainCommand = defineCommand({
 
 		if (!process.env.SLAY_Q_CRON_URL) {
 			console.error("Missing SLAY_Q_CRON_URL environment variable.");
-			process.exit(1);
-		}
-
-		if (!process.env.SLAY_Q_DATABASE_URL) {
-			console.error("Missing SLAY_Q_DATABASE_URL environment variable.");
 			process.exit(1);
 		}
 
