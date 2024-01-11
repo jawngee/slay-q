@@ -5,8 +5,21 @@ import { createClient, SupabaseClient } from "@supabase/supabase-js";
 export class SlayQSupabaseDriver<T> implements SlayQDriver {
   private readonly _client: SupabaseClient<T>;
 
-  constructor() {
-    this._client = createClient<T>(process.env.SUPABASE_URL!, process.env.SUPABASE_SERVICE_KEY!);
+  constructor(options: {
+		supabaseUrl?: string,
+		supabaseServiceKey?: string,
+	} = {}) {
+		const url = options.supabaseUrl ?? process.env.SUPABASE_URL;
+		if (!url) {
+			throw new Error("Missing required supabase url.");
+		}
+
+		const key = options.supabaseServiceKey ?? process.env.SUPABASE_SERVICE_KEY;
+		if (!key) {
+			throw new Error("Missing required supabase service key.");
+		}
+
+		this._client = createClient<T>(url, key);
   }
 
   async addJob(jobDef: SlayQJobDefinition): Promise<SlayQRPCError | null> {
