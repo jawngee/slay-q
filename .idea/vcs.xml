@@ -2,9 +2,5 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/packages/date-utils" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/packages/signature" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/packages/slay-q" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/packages/slay-q-server" vcs="Git" />
   </component>
 </project>
