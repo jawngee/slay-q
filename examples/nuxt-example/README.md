@@ -9,7 +9,7 @@ Look at the [SlayQ package](https://github.com/SlayPics/SlayUtils/tree/main/pack
 To run the example
 
 ```bash
-npx gigest@latest gh:SlayPics/SlayUtils/examples/nuxt-example slayq-nuxt-example
+npx giget@latest gh:SlayPics/SlayUtils/examples/nuxt-example slayq-nuxt-example --install
 cd slayq-nuxt-example
 pnpm install
 cp example.env .env
