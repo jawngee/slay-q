@@ -12,6 +12,7 @@ To run the example
 npx gigest@latest gh:SlayPics/SlayUtils/examples/nuxt-example slayq-nuxt-example
 cd slayq-nuxt-example
 pnpm install
+cp example.env .env
 docker compose up -d
 pnpm run dev
 ```
