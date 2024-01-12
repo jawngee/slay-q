@@ -1,0 +1,37 @@
+version: '3.1'
+services:
+  slay_q_postgres:
+    container_name: slay_q_postgres
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    ports:
+      - 54322:5432
+    volumes:
+      - slay_q_postgres:/var/lib/postgresql/data
+
+  slay_q_ingest:
+    image: slaypics/slay-q-ingest
+    restart: always
+    depends_on:
+      - slay_q_postgres
+    env_file:
+      - worker.env
+    ports:
+      - 3012:3000
+
+  slay_q_server:
+    image: slaypics/slay-q-server
+    restart: always
+    depends_on:
+      - slay_q_ingest
+      - slay_q_postgres
+    env_file:
+      - worker.env
+    volumes:
+      - './slay-config-sample.json:/home/node/app/slay-config.json:ro'
+volumes:
+  slay_q_postgres:

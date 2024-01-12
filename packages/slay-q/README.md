@@ -59,6 +59,16 @@ Furthermore, you'll need to select a driver package to connect to your database:
 * [`@slay-pics/slay-q-postgres`](https://www.npmjs.com/package/@slay-pics/slay-q-postgres) - Driver that talks directly to Postgres via `pg` package.
 * [`@slay-pics/slay-q-rpc`](https://www.npmjs.com/package/@slay-pics/slay-q-rpc) - Driver that talks to a [`slay-q-ingest`](https://github.com/SlayPics/SlayUtils/tree/main/apps/slay-ingest) instance.  The Slay Q ingest is an HTTP RPC server.  See the nuxt example app for an example of its use.
 
+### Running a Local Development Server
+To run the local development server:
+
+```bash
+npx giget@latest gh:SlayPics/SlayUtils/docker slayq-docker
+cd slayq-docker
+docker compose up -d
+```
+When setting up your SlayQ client in your app you can use either the postgres driver or the RPC driver (see below).
+
 ### Write a Function/Job
 The key unit of Slay Q is an event which is represented as a function.  Each event/function is made up of individual steps.  When
 Slay Q executes a function it caches the output of each step so that if one should fail, and the function is retried, the steps
