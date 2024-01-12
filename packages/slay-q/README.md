@@ -22,6 +22,19 @@ It uses Graphile Workers on the backend (see Slay Q Server for details) and this
 * Droplet to run the [Slay Q Server](https://www.npmjs.com/package/@slay-pics/slay-q-server)
 * Sunglasses because you can't be this cool without them
 
+## Run The Example App
+To get a quick overview of how it works, check out the example nuxt app to see Slay Q in action:
+
+```bash
+npx giget@latest gh:SlayPics/SlayUtils/examples/nuxt-example slayq-nuxt-example --install
+cd slayq-nuxt-example
+pnpm install
+cp example.env .env
+docker compose up -d
+pnpm run dev
+```
+Once launched, visit [http://localhost:3000](http://localhost:3000).
+
 ## Usage
 
 Install package:
