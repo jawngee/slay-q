@@ -1,12 +1,14 @@
 {
   "name": "@slay-pics/slay-q",
-  "version": "0.1.7",
+  "version": "0.2.1",
   "description": "Slay Q is a queue and background job management system inspired by Inngest.  It's in production use on https://slay.pics for managing all of our media processing, notifications and other services.",
   "repository": "SlayPics/SlayUtils",
   "license": "MIT",
   "sideEffects": false,
   "type": "module",
   "keywords": [
+    "slayq",
+    "slay-q",
     "inngest",
     "qstash",
     "job queue",
@@ -33,6 +35,8 @@
   ],
   "scripts": {
     "build": "unbuild",
+    "stub": "unbuild --stub",
+    "watch": "node --watch-path=src dist/index.mjs",
     "dev": "vitest dev",
     "play": "jiti playground",
     "lint": "eslint --cache --ext .ts,.js,.mjs,.cjs . && prettier -c src test",
@@ -58,10 +62,8 @@
   "dependencies": {
     "@slay-pics/date-utils": "workspace:*",
     "@slay-pics/signature": "workspace:*",
-    "@supabase/supabase-js": "^2.39.2",
     "cron-parser": "^4.9.0",
     "ms": "^2.1.3",
-    "ofetch": "^1.3.3",
     "short-uuid": "^4.2.2",
     "zod": "^3.22.4"
   },

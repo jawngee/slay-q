@@ -40,6 +40,12 @@ pnpm install @slay-pics/slay-q
 bun install @slay-pics/slay-q
 ```
 
+Furthermore, you'll need to select a driver package to connect to your database:
+
+* [`@slay-pics/slay-q-supabase`](https://www.npmjs.com/package/@slay-pics/slay-q-supabase) - Supabase driver that uses `@supabase/supabase-js` to connect to supabase.
+* [`@slay-pics/slay-q-postgres`](https://www.npmjs.com/package/@slay-pics/slay-q-postgres) - Driver that talks directly to Postgres via `pg` package.
+* [`@slay-pics/slay-q-rpc`](https://www.npmjs.com/package/@slay-pics/slay-q-rpc) - Driver that talks to a [`slay-q-ingest`](https://github.com/SlayPics/SlayUtils/tree/main/apps/slay-ingest) instance.  The Slay Q ingest is an HTTP RPC server.  See the nuxt example app for an example of its use.
+
 ### Write a Function/Job
 The key unit of Slay Q is an event which is represented as a function.  Each event/function is made up of individual steps.  When
 Slay Q executes a function it caches the output of each step so that if one should fail, and the function is retried, the steps
@@ -311,6 +317,7 @@ In order to dispatch or receive events in whatever stack you are working with, y
 
 ```js
 import { SlayQClient } from "@slay-pics/slay-q";
+import { SlayQSupabaseDriver } from "@slay-pics/slay-q-supabase";
 
 import { sleepTestEvent, type SleepTestEvent } from "~/server/slay-q/testing/sleep-test";
 import { cronTestEvent, type CronTestEvent } from "~/server/slay-q/testing/cron-test";
@@ -348,8 +355,12 @@ you'll want to keep this as organized and neat as possible.  We have 180+ functi
 The `endpoint` is where `slay-q-server` can callback to when it has an event for your app to process.  Obviously this should be
 specified with configuration or environment variables.
 
-The `driver` is the interface with the database that the client will use.  Slay Q required Postgres, but we use Supabase exclusively,
-so we've only included a driver for that.  You must have `SUPABASE_URL` and `SUPABASE_SERVICE_KEY` environment variables defined.
+The `driver` is the interface with the database that the client will use.  Slay Q provides three base packages with different drivers:
+
+* [`@slay-pics/slay-q-supabase`](https://www.npmjs.com/package/@slay-pics/slay-q-supabase) - Supabase driver that uses `@supabase/supabase-js` to connect to supabase.
+* [`@slay-pics/slay-q-postgres`](https://www.npmjs.com/package/@slay-pics/slay-q-postgres) - Driver that talks directly to Postgres via `pg` package.
+* [`@slay-pics/slay-q-rpc`](https://www.npmjs.com/package/@slay-pics/slay-q-rpc) - Driver that talks to a [`slay-q-ingest`](https://github.com/SlayPics/SlayUtils/tree/main/apps/slay-ingest) instance.  The Slay Q ingest is an HTTP RPC server.  See the nuxt example app for an example of its use.
+
 
 ### Dispatch Events
 Once you've created the client, dispatching events is easy:

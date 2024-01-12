@@ -18,7 +18,7 @@ export class SlayQStep<T> {
     }
 
     const res = await fn();
-    this._stepCache.set(name, res);
+    this._stepCache.set(name, res ?? null);
 
     return res;
   }
