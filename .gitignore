@@ -8,3 +8,5 @@ dist
 *.env*
 .idea
 !example.env
+!ingest.env
+!worker.env
