@@ -13,12 +13,12 @@ export const waitsOnTestEvent = defineSlayQFunction(
   },
   async ({ event, data, step }) => {
     const step1val = await step.run("step-1-val", async () => {
-      console.log('step 1');
+      console.log('step 1 - run once');
       return 12;
     });
 
     const step2val = await step.run("step-2-val", async () => {
-      console.log('step 2');
+      console.log('step 2 - run once');
       return 'nice';
     });
 
@@ -30,6 +30,6 @@ export const waitsOnTestEvent = defineSlayQFunction(
       console.log("event did fire.");
     }
 
-    console.log(`done waiting ... ${step2val} ${step2val}`);
+    console.log(`done waiting ... ${step1val} ${step2val}`);
   }
 );

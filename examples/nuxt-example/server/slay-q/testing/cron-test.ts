@@ -8,6 +8,6 @@ export const cronTestEvent = defineSlayQFunction(
     schema: SlayQEmptyEvent,
   },
   async ({ event, data, step, retry }) => {
-    console.log("cron test", retry);
+    console.log("cron test triggered");
   }
 );

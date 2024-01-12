@@ -12,12 +12,12 @@ export const sleepTestEvent = defineSlayQFunction(
     console.log("retry", retry);
 
     const val = await step.run("first-step", async () => {
-      console.log("first step");
+      console.log("first step - only run once");
       return "cool";
     });
 
     const val2 = await step.run("second-step", async () => {
-      console.log("second step");
+      console.log("second step - only run once");
       return "world";
     });
 

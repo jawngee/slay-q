@@ -17,8 +17,8 @@ export const cancelOnTestEvent = defineSlayQFunction(
     ],
   },
   async ({ event, data, step, retry }) => {
-    console.log("cancel on test", retry);
-    await step.sleep('sleep-one-day', '3m');
-    console.log("never saw this", retry);
+    console.log("running cancelable event", retry);
+    await step.sleep('sleep-step', '3m');
+    console.log("done sleeping", retry);
   }
 );

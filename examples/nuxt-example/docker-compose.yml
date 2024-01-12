@@ -13,7 +13,7 @@ services:
     volumes:
       - postgres:/var/lib/postgresql/data
   slay_q_ingest:
-    image: slaypics/slay-ingest
+    image: slaypics/slay-q-ingest
     depends_on:
       - slay_example_postgres
     environment:

@@ -11,6 +11,6 @@ export const waitedForTestEvent = defineSlayQFunction(
     schema: WaitedForTestEvent,
   },
   async ({ event, data, step }) => {
-    console.log("waitingForId", data.waitingForId);
+    console.log('triggering waited for event', data.waitingForId);
   }
 );

@@ -11,11 +11,12 @@
   },
   "devDependencies": {
     "@slay-pics/slay-q": "workspace:*",
+    "@slay-pics/slay-q-rpc": "workspace:*",
     "autoprefixer": "^10.4.16",
-    "nuxt": "^3.9.0",
+    "nuxt": "^3.9.1",
     "postcss": "^8.4.33",
     "tailwindcss": "^3.4.1",
-    "vue": "^3.4.6",
+    "vue": "^3.4.10",
     "vue-router": "^4.2.5"
   },
   "dependencies": {
