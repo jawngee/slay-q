@@ -1,0 +1,36 @@
+version: '3.1'
+services:
+  slay_example_postgres:
+    container_name: slay_example_postgres
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    ports:
+      - 54322:5432
+    volumes:
+      - postgres:/var/lib/postgresql/data
+  slay_q_ingest:
+    image: slaypics/slay-ingest
+    depends_on:
+      - slay_example_postgres
+    environment:
+      - NITRO_SLAY_Q_SECRET=G,4DgB$.?>X]"w}w1745Xq2nKoM4BG74
+      - NITRO_DATABASE_URL=postgresql://postgres:postgres@slay_example_postgres:5432/postgres
+    ports:
+      - 3012:3000
+  slay_q_server:
+    image: slaypics/slay-q-server
+    depends_on:
+      - slay_q_ingest
+      - slay_example_postgres
+    environment:
+      - SLAY_Q_DATABASE_URL=postgresql://postgres:postgres@slay_example_postgres:5432/postgres
+      - SLAY_Q_SECRET=G,4DgB$.?>X]"w}w1745Xq2nKoM4BG74
+      - SLAY_Q_CRON_URL=http://host.docker.internal:3000/api/slay-q
+    volumes:
+      - './slay-config.json:/home/node/app/slay-config.json:ro'
+volumes:
+  postgres:

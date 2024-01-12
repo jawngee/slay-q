@@ -1,75 +1,27 @@
-# Nuxt 3 Minimal Starter
+# Sample app with SlayQ integrated
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+This is a simple Nuxt app that shows how SlayQ integrates with a fullstack app.
 
-## Setup
+Look at the [SlayQ package](https://github.com/SlayPics/SlayUtils/tree/main/packages/slay-q) to learn more.
 
-Make sure to install the dependencies:
+## Running It
+
+To run the example
 
 ```bash
-# npm
-npm install
-
-# pnpm
+npx gigest@latest gh:SlayPics/SlayUtils/examples/nuxt-example slayq-nuxt-example
+cd slayq-nuxt-example
 pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
+docker compose up -d
 pnpm run dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
+Once launched, visit [http://localhost:3000](http://localhost:3000).
 
-## Production
+## Notes
+This example app is using SlayQ via RPC.  The docker-compose contains:
 
-Build the application for production:
+* Postgres server
+* SlayQ ingest server (http rpc server)
+* SlayQ server (Graphile Worker)
 
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+SlayQ can work with RPC, postgres and supabase directly.
