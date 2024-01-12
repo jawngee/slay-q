@@ -10,8 +10,6 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "@slay-pics/slay-q": "workspace:*",
-    "@slay-pics/slay-q-rpc": "workspace:*",
     "autoprefixer": "^10.4.16",
     "nuxt": "^3.9.1",
     "postcss": "^8.4.33",
@@ -20,6 +18,8 @@
     "vue-router": "^4.2.5"
   },
   "dependencies": {
+    "@slay-pics/slay-q": "^0.2.1",
+    "@slay-pics/slay-q-rpc": "^0.2.0",
     "winston": "^3.11.0"
   }
 }
