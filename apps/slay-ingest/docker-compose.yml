@@ -23,4 +23,4 @@ services:
       - SLAY_Q_CRON_URL=http://host.docker.internal:3000/api/slay-q
     volumes:
       - './slay-config.json:/home/node/app/slay-config.json:ro'
-    command: "npx @slay-pics/slay-q-server@latest /home/node/app/slay-config.json"
+    command: "npx --yes @slay-pics/slay-q-server@latest /home/node/app/slay-config.json"
