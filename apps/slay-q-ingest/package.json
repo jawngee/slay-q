@@ -1,6 +1,6 @@
 {
   "private": true,
-  "version": "0.1.0",
+  "version": "0.2.1",
   "scripts": {
     "prepare": "nitropack prepare",
     "dev": "nitropack dev",
@@ -11,7 +11,9 @@
     "@slay-pics/date-utils": "workspace:*",
     "@slay-pics/signature": "workspace:*",
     "@slay-pics/slay-q": "workspace:*",
-    "@supabase/supabase-js": "^2.39.2",
+    "@slay-pics/slay-q-postgres": "workspace:*",
+    "@slay-pics/slay-q-supabase": "workspace:*",
+    "@supabase/supabase-js": "^2.39.3",
     "h3-zod": "^0.5.3",
     "nitropack": "latest",
     "pg": "^8.11.3",

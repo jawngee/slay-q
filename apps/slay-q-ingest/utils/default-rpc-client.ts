@@ -1,5 +1,5 @@
-import {SlayQSupabaseDriver} from "@slay-pics/slay-q";
-import {SlayQPostgresDriver} from "./postgres-driver";
+import {SlayQPostgresDriver} from "@slay-pics/slay-q-postgres";
+import {SlayQSupabaseDriver} from "@slay-pics/slay-q-supabase";
 
 const config = useRuntimeConfig();
 
