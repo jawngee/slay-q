@@ -1,7 +1,6 @@
-import type { SlayQDriver } from "../driver";
-import type { SlayQJobDefinition, SlayQRPCError } from "../types/rpc";
 import {ofetch} from "ofetch/node";
 import {calcSig} from "@slay-pics/signature";
+import {SlayQDriver, SlayQJobDefinition, SlayQRPCError} from "@slay-pics/slay-q";
 
 export class SlayQIngestRPCDriver<T> implements SlayQDriver {
 	private readonly _secret:string;
