@@ -16,6 +16,8 @@ It uses Graphile Workers on the backend (see Slay Q Server for details) and this
 * We process 1 million+ events in our dev environment per month on a fairly cheap DigitalOcean droplet.
 * Does not store event history like Inngest
 
+[Read the Docs](https://slayq-docs.vercel.app)
+
 ## Requirements
 
 * Postgres Database (we use Supabase at Slay)

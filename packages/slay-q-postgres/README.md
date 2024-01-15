@@ -7,6 +7,8 @@
 
 Postgres driver for [Slay Q](https://www.npmjs.com/package/@slay-pics/slay-q).
 
+[Read the Docs](https://slayq-docs.vercel.app)
+
 ## Usage
 
 Install package:

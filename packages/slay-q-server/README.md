@@ -9,6 +9,8 @@ This is the server component of [Slay Q](https://www.npmjs.com/package/@slay-pic
 
 This is a thin wrapper around the super awesome [Graphile Worker](https://worker.graphile.org) which is doing all of the heavy lifting.
 
+[Read the Docs](https://slayq-docs.vercel.app)
+
 ## Usage
 
 Install package:

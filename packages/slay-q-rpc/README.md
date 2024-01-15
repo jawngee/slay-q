@@ -7,6 +7,8 @@
 
 Driver for `slay-q-ingest` RPC server.  See [Slay Q](https://www.npmjs.com/package/@slay-pics/slay-q) for more info.
 
+[Read the Docs](https://slayq-docs.vercel.app)
+
 ## Usage
 
 Install package:

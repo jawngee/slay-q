@@ -1,6 +1,6 @@
 {
   "name": "@slay-pics/slay-q",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Slay Q is a queue and background job management system inspired by Inngest.  It's in production use on https://slay.pics for managing all of our media processing, notifications and other services.",
   "repository": "SlayPics/SlayUtils",
   "license": "MIT",
