@@ -1,0 +1,1 @@
+{"id":"dev","timestamp":1705307641848,"matcher":{"static":{"/":null,"/api":null,"/api/search":{"prerender":true},"/deploy":null,"/deploy/node":{"redirect":"/deploy/runtimes/node"}},"wildcard":{},"dynamic":{}},"prerendered":[]}
