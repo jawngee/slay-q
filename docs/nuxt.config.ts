@@ -1,6 +1,5 @@
 export default defineNuxtConfig({
-  extends: "@nuxt-themes/docus",
-  modules: ["nuxt-umami"],
+  extends: ["nuxt-umami", "@nuxt-themes/docus"],
   css: [
     "~/assets/css/fixes.css"
   ],
