@@ -3,6 +3,7 @@
   "version": "0.1.8",
   "description": "Slay Q Server is the server component of Slay Q, a queue and background job management system inspired by Inngest.  It's in production use on https://slay.pics for managing all of our media processing, notifications and other services.",
   "repository": "SlayPics/SlayUtils",
+  "homepage": "https://slayq-docs.vercel.app",
   "license": "MIT",
   "keywords": [
     "slayq",

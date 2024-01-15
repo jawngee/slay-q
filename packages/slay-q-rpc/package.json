@@ -3,6 +3,7 @@
   "version": "0.2.1",
   "description": "RPC driver for Slay Q to work with slay-ingest HTTP RPC server",
   "repository": "SlayPics/SlayUtils",
+  "homepage": "https://slayq-docs.vercel.app",
   "license": "MIT",
   "keywords": [
     "slayq",

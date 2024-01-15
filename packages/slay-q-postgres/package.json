@@ -3,6 +3,7 @@
   "version": "0.2.1",
   "description": "Postgres driver for SlayQ",
   "repository": "SlayPics/SlayUtils",
+  "homepage": "https://slayq-docs.vercel.app",
   "license": "MIT",
   "keywords": [
     "slayq",
