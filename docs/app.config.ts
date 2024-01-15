@@ -8,7 +8,7 @@ export default defineAppConfig({
     url: "https://www.npmjs.com/package/@slay-pics/slay-q",
     image: "/cover.png",
     socials: {
-      github: "SlayPics/SlayUtils/packages/slay-q",
+      github: "SlayPics/SlayUtils/tree/main/packages/slay-q",
     },
     github: {
       owner: "SlayPics",
@@ -24,7 +24,7 @@ export default defineAppConfig({
       credits: {
         icon: "",
         text: "Made with 💛",
-        href: "https://github.com/SlayPics/SlayUtils/packages/slay-q",
+        href: "https://github.com/SlayPics/SlayUtils/tree/main/packages/slay-q",
       },
       iconLinks: [
       ],
